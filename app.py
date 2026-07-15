@@ -1,6 +1,7 @@
-"""KLPMotionAI public demo app.
+"""KLPMotionAI public demo app for flat Render uploads.
 
-Serves the static frontend and exposes a small prediction API for the v1 model.
+All runtime files live in the same directory because some upload flows do not
+preserve folders.
 """
 
 from __future__ import annotations
@@ -18,8 +19,8 @@ from fastapi.responses import FileResponse, JSONResponse
 APP_DIR = Path(__file__).resolve().parent
 FRONTEND_PATH = APP_DIR / "index.html"
 TEAM_PHOTO_PATH = APP_DIR / "Foto_equipo.jpeg"
-MODEL_DIR = APP_DIR / "model_v1"
-PREDICT_V1_PATH = MODEL_DIR / "predict_v1.py"
+MODEL_DIR = APP_DIR
+PREDICT_V1_PATH = APP_DIR / "predict_v1.py"
 
 app = FastAPI(
     title="KLPMotionAI Demo API",
