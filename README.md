@@ -1,12 +1,19 @@
-# KLPMotionAI Render Deploy
+# KLPMotionAI Render Deploy Sin Carpetas
 
-Paquete minimo para publicar KLPMotionAI como un Render Web Service gratis.
+Este paquete es para subir archivos individualmente cuando el flujo de subida no conserva carpetas.
 
-Rutas:
+Todos estos archivos deben quedar en la raiz del repositorio:
 
-- `/`: pagina publica.
-- `/api/predict-v1`: API del modelo v1.
-- `/health`: verificacion del servicio.
+- `app.py`
+- `index.html`
+- `Foto_equipo.jpeg`
+- `requirements.txt`
+- `runtime.txt`
+- `render.yaml`
+- `predict_v1.py`
+- `modelo_v1.pkl`
+- `scaler_x_v1.pkl`
+- `scaler_y_v1.pkl`
 
 Render:
 
