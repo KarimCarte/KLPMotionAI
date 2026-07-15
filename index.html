@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="es" data-default-lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KLPMotionAI | Patrocinio oficial</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #13202b;
+      --ink-soft: #425466;
+      --paper: #f7faf9;
+      --panel: #ffffff;
+      --line: #dbe6e3;
+      --cyan: #0887a6;
+      --green: #16815b;
+      --gold: #d58924;
+      --coral: #cf4f3f;
+      --navy: #16293f;
+      --mint: #e7f6ef;
+      --sky: #e5f5fa;
+      --warm: #fff1df;
+      --shadow: 0 18px 50px rgba(19, 32, 43, 0.12);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(135deg, rgba(229, 245, 250, 0.95) 0%, rgba(247, 250, 249, 0.96) 38%, rgba(255, 241, 223, 0.9) 100%);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .site-shell {
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(219, 230, 227, 0.8);
+      background: rgba(247, 250, 249, 0.88);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--navy);
+      display: grid;
+      place-items: center;
+      color: white;
+      box-shadow: 0 8px 24px rgba(22, 41, 63, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark::before {
+      content: "";
+      width: 22px;
+      height: 14px;
+      border-top: 3px solid var(--gold);
+      border-radius: 50% 50% 0 0;
+      transform: translateY(4px) rotate(-10deg);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--ink-soft);
+      font-size: 0.94rem;
+    }
+
+    .nav a:hover {
+      color: var(--ink);
+    }
+
+    .language-toggle {
+      display: inline-flex;
+      padding: 3px;
+      background: #edf4f2;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      gap: 3px;
+    }
+
+    .language-toggle button {
+      border: 0;
+      min-width: 44px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+    }
+
+    .language-toggle button.is-active {
+      background: var(--ink);
+      color: white;
+    }
+
+    .section {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 76px 0;
+    }
+
+    .hero {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      min-height: calc(100vh - 74px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+      gap: 44px;
+      align-items: center;
+      padding: 56px 0 38px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--green);
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 2px;
+      background: var(--green);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: 0.9;
+      letter-spacing: 0;
+      margin-bottom: 22px;
+      color: var(--navy);
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .button.primary {
+      background: var(--gold);
+      color: #251707;
+      box-shadow: 0 14px 26px rgba(213, 137, 36, 0.24);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.72);
+      border-color: var(--line);
+      color: var(--ink);
+    }
+
+    .button.model {
+      width: 100%;
+      background: var(--navy);
+      color: #fff;
+      box-shadow: 0 12px 22px rgba(22, 41, 63, 0.18);
+    }
+
+    .model-status {
+      margin: -6px 0 0;
+      color: var(--ink-soft);
+      font-size: 0.86rem;
+    }
+
+    .model-status.is-error {
+      color: var(--coral);
+      font-weight: 750;
+    }
+
+    .model-status.is-ready {
+      color: var(--green);
+      font-weight: 750;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 650px;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 96px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .hero-visual {
+      background: var(--panel);
+      border: 1px solid rgba(219, 230, 227, 0.9);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 0.88rem;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--mint);
+      color: var(--green);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: var(--green);
+    }
+
+    .hero-svg-wrap {
+      padding: 18px;
+      background:
+        linear-gradient(rgba(8, 135, 166, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(8, 135, 166, 0.08) 1px, transparent 1px),
+        #fbfefd;
+      background-size: 34px 34px;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .trajectory-real {
+      fill: none;
+      stroke: var(--green);
+      stroke-width: 5;
+      stroke-linecap: round;
+    }
+
+    .trajectory-ai {
+      fill: none;
+      stroke: var(--coral);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 9 9;
+    }
+
+    .trajectory-v1 {
+      fill: none;
+      stroke: var(--navy);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 2 10;
+    }
+
+    .trajectory-grid {
+      stroke: rgba(66, 84, 102, 0.14);
+      stroke-width: 1;
+    }
+
+    .ball {
+      fill: var(--gold);
+      stroke: #7a4300;
+      stroke-width: 2;
+    }
+
+    .label-text {
+      fill: var(--ink-soft);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .section-heading {
+      max-width: 780px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.02;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--ink-soft);
+      font-size: 1.08rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 10px 32px rgba(19, 32, 43, 0.08);
+    }
+
+    .panel h3 {
+      color: var(--navy);
+      font-size: 1.28rem;
+      margin-bottom: 10px;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--ink-soft);
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      min-height: 184px;
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--sky);
+      color: var(--cyan);
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .demo-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 24px;
+      align-items: stretch;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .demo-canvas {
+      min-height: 430px;
+      border-radius: 8px;
+      background:
+        linear-gradient(rgba(22, 129, 91, 0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 129, 91, 0.08) 1px, transparent 1px),
+        #fbfefd;
+      background-size: 40px 40px;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      padding: 12px;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .control {
+      background: #f5faf8;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .control label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 850;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .control input {
+      width: 100%;
+      accent-color: var(--green);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      padding: 12px;
+      background: #fff;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--ink-soft);
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+
+    .metric strong {
+      color: var(--navy);
+      font-size: 1.25rem;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .legend span::before {
+      content: "";
+      width: 22px;
+      height: 3px;
+      border-radius: 99px;
+      background: var(--green);
+    }
+
+    .legend .legend-ai::before {
+      background: var(--coral);
+      border-top: 2px dashed var(--coral);
+      height: 0;
+    }
+
+    .legend .legend-v1::before {
+      background: transparent;
+      border-top: 3px dotted var(--navy);
+      height: 0;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .pipe-item {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 152px;
+      position: relative;
+    }
+
+    .pipe-item strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 7px;
+    }
+
+    .pipe-item span {
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .evidence-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .evidence-card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .notice {
+      background: var(--warm);
+      border: 1px solid rgba(213, 137, 36, 0.38);
+      border-radius: 8px;
+      padding: 18px;
+      color: #6f4310;
+      font-weight: 720;
+      margin-top: 18px;
+    }
+
+    .team-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .team-photo {
+      margin: 20px 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #eef5f3;
+    }
+
+    .team-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: center 45%;
+    }
+
+    .team-photo figcaption {
+      padding: 11px 13px;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .contact-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfefd;
+      color: var(--navy);
+      font-weight: 850;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--ink-soft);
+      text-align: center;
+      background: rgba(255, 255, 255, 0.56);
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .demo-panel,
+      .team-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .solution-grid,
+      .pipeline,
+      .evidence-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner,
+      .section,
+      .hero {
+        width: min(100% - 22px, 1180px);
+      }
+
+      .section {
+        padding: 54px 0;
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      .hero-stats,
+      .two-col,
+      .solution-grid,
+      .pipeline,
+      .evidence-grid,
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .demo-canvas {
+        min-height: 300px;
+      }
+
+      .visual-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .brand span {
+        max-width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#inicio" aria-label="KLPMotionAI">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>KLPMotionAI</span>
+        </a>
+        <nav class="nav" aria-label="Principal">
+          <a href="#problema" data-i18n="nav.problem">Problema</a>
+          <a href="#demo" data-i18n="nav.demo">Demo</a>
+          <a href="#tecnica" data-i18n="nav.tech">Tecnica</a>
+          <a href="#patrocinio" data-i18n="nav.sponsor">Patrocinio</a>
+        </nav>
+        <div class="language-toggle" aria-label="Language switch">
+          <button type="button" data-lang="es" class="is-active" aria-pressed="true">ES</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div>
+          <div class="eyebrow" data-i18n="hero.eyebrow">Patrocinio oficial</div>
+          <h1>KLPMotionAI</h1>
+          <p class="hero-copy" data-i18n="hero.copy">Una herramienta educativa que combina experimentos reales, fisica e inteligencia artificial para que el movimiento parabolico deje de ser una formula abstracta y se convierta en una experiencia visible.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#patrocinio" data-i18n="hero.cta">Apoyar el proyecto</a>
+            <a class="button secondary" href="#demo" data-i18n="hero.demo">Ver demo interactiva</a>
+          </div>
+          <div class="hero-stats" aria-label="Indicadores principales">
+            <div class="stat">
+              <strong data-i18n="hero.stat1.value">Expociencias</strong>
+              <span data-i18n="hero.stat1.label">Pase a fase internacional representando a Mexico.</span>
+            </div>
+            <div class="stat">
+              <strong data-i18n="hero.stat2.value">IA + fisica</strong>
+              <span data-i18n="hero.stat2.label">Comparacion visual entre trayectoria real, modelo clasico y prediccion.</span>
+            </div>
+            <div class="stat">
+              <strong data-i18n="hero.stat3.value">STEM visual</strong>
+              <span data-i18n="hero.stat3.label">Disenado para reducir abstraccion y aumentar participacion.</span>
+            </div>
+          </div>
+        </div>
+        <aside class="hero-visual" aria-label="Vista conceptual del experimento">
+          <div class="visual-header">
+            <span data-i18n="hero.visualTitle">Comparacion didactica de trayectorias</span>
+            <span class="status-pill" data-i18n="hero.status">v2 en desarrollo</span>
+          </div>
+          <div class="hero-svg-wrap">
+            <svg viewBox="0 0 640 390" role="img" aria-labelledby="heroGraphTitle">
+              <title id="heroGraphTitle">Trayectorias comparadas de movimiento parabolico</title>
+              <line class="trajectory-grid" x1="60" y1="330" x2="590" y2="330"></line>
+              <line class="trajectory-grid" x1="60" y1="60" x2="60" y2="330"></line>
+              <line class="trajectory-grid" x1="60" y1="260" x2="590" y2="260"></line>
+              <line class="trajectory-grid" x1="60" y1="190" x2="590" y2="190"></line>
+              <path class="trajectory-real" d="M72 318 C170 132, 345 80, 574 316"></path>
+              <path class="trajectory-ai" d="M72 318 C176 146, 342 92, 574 306"></path>
+              <circle class="ball" cx="188" cy="144" r="12"></circle>
+              <text class="label-text" x="80" y="356">x</text>
+              <text class="label-text" x="34" y="72">y</text>
+              <text class="label-text" x="240" y="78" data-i18n="hero.svgPeak">altura maxima</text>
+              <text class="label-text" x="380" y="232" data-i18n="hero.svgCompare">IA vs fisica</text>
+            </svg>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section" id="problema">
+        <div class="section-heading">
+          <div class="eyebrow" data-i18n="problem.eyebrow">El problema educativo</div>
+          <h2 data-i18n="problem.title">La fisica se aprende muchas veces como procedimiento, no como fenomeno.</h2>
+          <p data-i18n="problem.copy">Miles de estudiantes memorizan ecuaciones sin tener una oportunidad clara de ver, medir y discutir el movimiento que esas ecuaciones describen.</p>
+        </div>
+        <div class="two-col">
+          <article class="panel">
+            <h3 data-i18n="problem.card1.title">Una barrera de abstraccion</h3>
+            <p data-i18n="problem.card1.copy">Cuando el movimiento parabolico aparece solo en pizarrones y diagramas, conceptos como velocidad, aceleracion, gravedad y alcance pueden sentirse lejanos.</p>
+          </article>
+          <article class="panel">
+            <h3 data-i18n="problem.card2.title">Una oportunidad para aprender haciendo</h3>
+            <p data-i18n="problem.card2.copy">El proyecto busca que el estudiante observe un lanzamiento real, vea los datos y conecte la evidencia con el modelo fisico.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="solucion">
+        <div class="section-heading">
+          <div class="eyebrow" data-i18n="solution.eyebrow">Nuestra solucion</div>
+          <h2 data-i18n="solution.title">Experimentar, visualizar y comparar.</h2>
+          <p data-i18n="solution.copy">KLPMotionAI no reemplaza la ensenanza tradicional: la complementa con una experiencia visual donde la IA, el modelo fisico y los datos reales funcionan como herramientas para comprender.</p>
+        </div>
+        <div class="solution-grid">
+          <article class="step">
+            <div class="step-number">1</div>
+            <h3 data-i18n="solution.step1.title">Lanzamiento real</h3>
+            <p data-i18n="solution.step1.copy">El estudiante observa o realiza un tiro con una pelota visible para la camara.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">2</div>
+            <h3 data-i18n="solution.step2.title">Medicion</h3>
+            <p data-i18n="solution.step2.copy">El sistema detecta posiciones, calibra escala y convierte pixeles a metros.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">3</div>
+            <h3 data-i18n="solution.step3.title">Prediccion</h3>
+            <p data-i18n="solution.step3.copy">La IA estima posiciones y permite contrastarlas con la fisica clasica.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">4</div>
+            <h3 data-i18n="solution.step4.title">Comprension</h3>
+            <p data-i18n="solution.step4.copy">La trayectoria deja de ser una formula aislada y se vuelve una evidencia observable.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="demo">
+        <div class="section-heading">
+          <div class="eyebrow" data-i18n="demo.eyebrow">Demo visual</div>
+          <h2 data-i18n="demo.title">Ajusta el lanzamiento y mira como cambia la trayectoria.</h2>
+          <p data-i18n="demo.copy">Esta visualizacion es educativa: muestra el comportamiento esperado del modelo fisico y una curva IA ilustrativa. La IA real del proyecto se explica en la seccion tecnica.</p>
+        </div>
+        <div class="demo-panel">
+          <div class="demo-canvas">
+            <svg id="trajectorySvg" viewBox="0 0 720 430" role="img" aria-labelledby="demoGraphTitle">
+              <title id="demoGraphTitle">Demo interactiva de trayectoria parabolica</title>
+              <line class="trajectory-grid" x1="56" y1="360" x2="670" y2="360"></line>
+              <line class="trajectory-grid" x1="56" y1="44" x2="56" y2="360"></line>
+              <line class="trajectory-grid" x1="56" y1="280" x2="670" y2="280"></line>
+              <line class="trajectory-grid" x1="56" y1="200" x2="670" y2="200"></line>
+              <line class="trajectory-grid" x1="56" y1="120" x2="670" y2="120"></line>
+              <path id="physicsPath" class="trajectory-real" d=""></path>
+              <path id="aiPath" class="trajectory-ai" d=""></path>
+              <path id="v1Path" class="trajectory-v1" d=""></path>
+              <circle id="demoBall" class="ball" cx="56" cy="360" r="10"></circle>
+              <text class="label-text" x="60" y="392" data-i18n="demo.axisX">distancia horizontal</text>
+              <text class="label-text" x="18" y="58" data-i18n="demo.axisY">altura</text>
+            </svg>
+          </div>
+          <div class="controls" aria-label="Controles de la demo">
+            <div class="control">
+              <label for="angleControl">
+                <span data-i18n="demo.angle">Angulo</span>
+                <output id="angleValue">45°</output>
+              </label>
+              <input id="angleControl" type="range" min="20" max="70" step="1" value="45" />
+            </div>
+            <div class="control">
+              <label for="speedControl">
+                <span data-i18n="demo.speed">Velocidad inicial</span>
+                <output id="speedValue">10 m/s</output>
+              </label>
+              <input id="speedControl" type="range" min="4" max="16" step="0.5" value="10" />
+            </div>
+            <div class="metrics-grid">
+              <div class="metric">
+                <span data-i18n="demo.range">Alcance</span>
+                <strong id="rangeMetric">10.19 m</strong>
+              </div>
+              <div class="metric">
+                <span data-i18n="demo.height">Altura max.</span>
+                <strong id="heightMetric">2.55 m</strong>
+              </div>
+              <div class="metric">
+                <span data-i18n="demo.time">Tiempo de vuelo</span>
+                <strong id="timeMetric">1.44 s</strong>
+              </div>
+              <div class="metric">
+                <span data-i18n="demo.gravity">Gravedad</span>
+                <strong>9.81 m/s²</strong>
+              </div>
+            </div>
+            <button type="button" class="button model" id="predictV1Button" data-i18n="demo.predictV1">Predecir con modelo v1</button>
+            <p class="model-status" id="v1Status" data-i18n="demo.v1Hint">Abre esta demo con el servidor local para usar el modelo real.</p>
+            <div class="legend" aria-label="Leyenda">
+              <span class="legend-physics" data-i18n="demo.legendPhysics">Modelo fisico</span>
+              <span class="legend-ai" data-i18n="demo.legendAI">IA ilustrativa</span>
+              <span class="legend-v1" data-i18n="demo.legendV1">Modelo v1 real</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="tecnica">
+        <div class="section-heading">
+          <div class="eyebrow" data-i18n="tech.eyebrow">Como funciona</div>
+          <h2 data-i18n="tech.title">De un video a una trayectoria explicable.</h2>
+          <p data-i18n="tech.copy">Asi funciona nuestro modelo: medimos el lanzamiento, estimamos sus condiciones iniciales, normalizamos las variables y usamos una red neuronal interpretable para predecir puntos de la trayectoria.</p>
+        </div>
+        <div class="pipeline">
+          <div class="pipe-item">
+            <strong data-i18n="tech.p1.title">Video o camara</strong>
+            <span data-i18n="tech.p1.copy">Se captura el lanzamiento y se identifican frames utiles.</span>
+          </div>
+          <div class="pipe-item">
+            <strong data-i18n="tech.p2.title">Deteccion</strong>
+            <span data-i18n="tech.p2.copy">HSV, circulos y contornos ubican la pelota en pixeles.</span>
+          </div>
+          <div class="pipe-item">
+            <strong data-i18n="tech.p3.title">Calibracion</strong>
+            <span data-i18n="tech.p3.copy">Una referencia convierte pixeles a metros y normaliza la trayectoria.</span>
+          </div>
+          <div class="pipe-item">
+            <strong data-i18n="tech.p4.title">Modelo fisico</strong>
+            <span data-i18n="tech.p4.copy">Un ajuste parabolico estima velocidad inicial y calidad de datos.</span>
+          </div>
+          <div class="pipe-item">
+            <strong data-i18n="tech.p5.title">IA</strong>
+            <span data-i18n="tech.p5.copy">MLPRegressor predice pos_x y pos_y usando v0x, v0y, theta_rad y t.</span>
+          </div>
+        </div>
+        <div class="notice" data-i18n="tech.notice">La IA usa StandardScaler para normalizar entradas y salidas; esto mejora estabilidad sin volver el modelo dificil de explicar.</div>
+      </section>
+
+      <section class="section" id="evidencia">
+        <div class="section-heading">
+          <div class="eyebrow" data-i18n="evidence.eyebrow">Evidencia e impacto</div>
+          <h2 data-i18n="evidence.title">Reconocimiento nacional y evidencia educativa de primera ronda.</h2>
+          <p data-i18n="evidence.copy">El proyecto ya cuenta con resultados competitivos, presencia editorial y datos de aula que muestran mejor recepcion educativa cuando se usa la herramienta.</p>
+        </div>
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <strong data-i18n="evidence.card1.value">Reconocimiento nacional</strong>
+            <p data-i18n="evidence.card1">Primer lugar en Expociencias CDMX 2026, mejor promedio del evento y lugar en la revista "Las 100 mentes mas brillantes de Mexico", producida por la Agencia Nacional Especial de Ciencia y Tecnologia.</p>
+          </article>
+          <article class="evidence-card">
+            <strong>71.7/100</strong>
+            <p data-i18n="evidence.card2">Satisfaccion promedio en primera ronda para los grupos que trabajaron con IA, frente a 64.2/100 en grupos con clase tradicional.</p>
+          </article>
+          <article class="evidence-card">
+            <strong>+8.6 pts</strong>
+            <p data-i18n="evidence.card3">Mayor proporcion de estudiantes con intencion de seguir aprendiendo ciencia en primera ronda: 35.7% con IA contra 27.1% en clase tradicional.</p>
+          </article>
+        </div>
+        <div class="notice" data-i18n="evidence.notice">La v1 es la base validada en pruebas educativas; v2 sigue en desarrollo y conserva compatibilidad conceptual con esa base.</div>
+      </section>
+
+      <section class="section" id="patrocinio">
+        <div class="team-strip">
+          <div class="panel">
+            <div class="eyebrow" data-i18n="sponsor.eyebrow">Patrocinio oficial</div>
+            <h2 data-i18n="sponsor.title">Apoyar KLPMotionAI es invertir en ciencia educativa creada por jovenes mexicanos.</h2>
+            <p data-i18n="sponsor.copy">El patrocinio permite representar a Mexico en la fase internacional de Expociencias y presentar una propuesta que acerca la fisica, la inteligencia artificial y la experimentacion a mas estudiantes.</p>
+            <figure class="team-photo">
+              <img src="Foto_equipo.jpeg" alt="Equipo KLPMotionAI con medallas en Expociencias" />
+              <figcaption data-i18n="sponsor.photoCaption">Equipo KLPMotionAI despues de Expociencias CDMX 2026.</figcaption>
+            </figure>
+            <h3 data-i18n="sponsor.teamTitle">Equipo</h3>
+            <p data-i18n="sponsor.team">Karim Carte Granillo, Luciana Garcia de Quevedo Besserer y Patricio Moran Avalos, bajo la asesoria de Montserrat Zaragoza Ojeda.</p>
+          </div>
+          <aside class="panel">
+            <h3 data-i18n="sponsor.contactTitle">Contacto</h3>
+            <p data-i18n="sponsor.contactCopy">Estamos listos para compartir mas detalles, resultados y formas de colaboracion.</p>
+            <div class="contact-list">
+              <a href="mailto:klpmotionai@gmail.com">klpmotionai@gmail.com <span>→</span></a>
+              <a href="https://www.instagram.com/klpmotionai" target="_blank" rel="noreferrer">@klpmotionai <span>→</span></a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span data-i18n="footer">KLPMotionAI | Proyecto educativo de movimiento parabolico, IA y visualizacion cientifica.</span>
+    </footer>
+  </div>
+
+  <script id="klp-app">
+    (function () {
+      const G = 9.81;
+      const translations = {
+        es: {
+          "nav.problem": "Problema",
+          "nav.demo": "Demo",
+          "nav.tech": "Tecnica",
+          "nav.sponsor": "Patrocinio",
+          "hero.eyebrow": "Patrocinio oficial",
+          "hero.copy": "Una herramienta educativa que combina experimentos reales, fisica e inteligencia artificial para que el movimiento parabolico deje de ser una formula abstracta y se convierta en una experiencia visible.",
+          "hero.cta": "Apoyar el proyecto",
+          "hero.demo": "Ver demo interactiva",
+          "hero.stat1.value": "Expociencias",
+          "hero.stat1.label": "Pase a fase internacional representando a Mexico.",
+          "hero.stat2.value": "IA + fisica",
+          "hero.stat2.label": "Comparacion visual entre trayectoria real, modelo clasico y prediccion.",
+          "hero.stat3.value": "STEM visual",
+          "hero.stat3.label": "Disenado para reducir abstraccion y aumentar participacion.",
+          "hero.visualTitle": "Comparacion didactica de trayectorias",
+          "hero.status": "v2 en desarrollo",
+          "hero.svgPeak": "altura maxima",
+          "hero.svgCompare": "IA vs fisica",
+          "problem.eyebrow": "El problema educativo",
+          "problem.title": "La fisica se aprende muchas veces como procedimiento, no como fenomeno.",
+          "problem.copy": "Miles de estudiantes memorizan ecuaciones sin tener una oportunidad clara de ver, medir y discutir el movimiento que esas ecuaciones describen.",
+          "problem.card1.title": "Una barrera de abstraccion",
+          "problem.card1.copy": "Cuando el movimiento parabolico aparece solo en pizarrones y diagramas, conceptos como velocidad, aceleracion, gravedad y alcance pueden sentirse lejanos.",
+          "problem.card2.title": "Una oportunidad para aprender haciendo",
+          "problem.card2.copy": "El proyecto busca que el estudiante observe un lanzamiento real, vea los datos y conecte la evidencia con el modelo fisico.",
+          "solution.eyebrow": "Nuestra solucion",
+          "solution.title": "Experimentar, visualizar y comparar.",
+          "solution.copy": "KLPMotionAI no reemplaza la ensenanza tradicional: la complementa con una experiencia visual donde la IA, el modelo fisico y los datos reales funcionan como herramientas para comprender.",
+          "solution.step1.title": "Lanzamiento real",
+          "solution.step1.copy": "El estudiante observa o realiza un tiro con una pelota visible para la camara.",
+          "solution.step2.title": "Medicion",
+          "solution.step2.copy": "El sistema detecta posiciones, calibra escala y convierte pixeles a metros.",
+          "solution.step3.title": "Prediccion",
+          "solution.step3.copy": "La IA estima posiciones y permite contrastarlas con la fisica clasica.",
+          "solution.step4.title": "Comprension",
+          "solution.step4.copy": "La trayectoria deja de ser una formula aislada y se vuelve una evidencia observable.",
+          "demo.eyebrow": "Demo visual",
+          "demo.title": "Ajusta el lanzamiento y mira como cambia la trayectoria.",
+          "demo.copy": "Esta visualizacion es educativa: muestra el comportamiento esperado del modelo fisico y una curva IA ilustrativa. La IA real del proyecto se explica en la seccion tecnica.",
+          "demo.axisX": "distancia horizontal",
+          "demo.axisY": "altura",
+          "demo.angle": "Angulo",
+          "demo.speed": "Velocidad inicial",
+          "demo.range": "Alcance",
+          "demo.height": "Altura max.",
+          "demo.time": "Tiempo de vuelo",
+          "demo.gravity": "Gravedad",
+          "demo.legendPhysics": "Modelo fisico",
+          "demo.legendAI": "IA ilustrativa",
+          "demo.legendV1": "Modelo v1 real",
+          "demo.predictV1": "Predecir con modelo v1",
+          "demo.v1Hint": "Abre esta demo con el servidor local para usar el modelo real.",
+          "demo.v1Loading": "Ejecutando modelo v1...",
+          "demo.v1Ready": "Modelo v1 listo",
+          "demo.v1Error": "Para usar el modelo real, abre la demo con python klp_demo_server.py.",
+          "tech.eyebrow": "Como funciona",
+          "tech.title": "De un video a una trayectoria explicable.",
+          "tech.copy": "Asi funciona nuestro modelo: medimos el lanzamiento, estimamos sus condiciones iniciales, normalizamos las variables y usamos una red neuronal interpretable para predecir puntos de la trayectoria.",
+          "tech.p1.title": "Video o camara",
+          "tech.p1.copy": "Se captura el lanzamiento y se identifican frames utiles.",
+          "tech.p2.title": "Deteccion",
+          "tech.p2.copy": "HSV, circulos y contornos ubican la pelota en pixeles.",
+          "tech.p3.title": "Calibracion",
+          "tech.p3.copy": "Una referencia convierte pixeles a metros y normaliza la trayectoria.",
+          "tech.p4.title": "Modelo fisico",
+          "tech.p4.copy": "Un ajuste parabolico estima velocidad inicial y calidad de datos.",
+          "tech.p5.title": "IA",
+          "tech.p5.copy": "MLPRegressor predice pos_x y pos_y usando v0x, v0y, theta_rad y t.",
+          "tech.notice": "La IA usa StandardScaler para normalizar entradas y salidas; esto mejora estabilidad sin volver el modelo dificil de explicar.",
+          "evidence.eyebrow": "Evidencia e impacto",
+          "evidence.title": "Reconocimiento nacional y evidencia educativa de primera ronda.",
+          "evidence.copy": "El proyecto ya cuenta con resultados competitivos, presencia editorial y datos de aula que muestran mejor recepcion educativa cuando se usa la herramienta.",
+          "evidence.card1.value": "Reconocimiento nacional",
+          "evidence.card1": "Primer lugar en Expociencias CDMX 2026, mejor promedio del evento y lugar en la revista \"Las 100 mentes mas brillantes de Mexico\", producida por la Agencia Nacional Especial de Ciencia y Tecnologia.",
+          "evidence.card2": "Satisfaccion promedio en primera ronda para los grupos que trabajaron con IA, frente a 64.2/100 en grupos con clase tradicional.",
+          "evidence.card3": "Mayor proporcion de estudiantes con intencion de seguir aprendiendo ciencia en primera ronda: 35.7% con IA contra 27.1% en clase tradicional.",
+          "evidence.notice": "La v1 es la base validada en pruebas educativas; v2 sigue en desarrollo y conserva compatibilidad conceptual con esa base.",
+          "sponsor.eyebrow": "Patrocinio oficial",
+          "sponsor.title": "Apoyar KLPMotionAI es invertir en ciencia educativa creada por jovenes mexicanos.",
+          "sponsor.copy": "El patrocinio permite representar a Mexico en la fase internacional de Expociencias y presentar una propuesta que acerca la fisica, la inteligencia artificial y la experimentacion a mas estudiantes.",
+          "sponsor.photoCaption": "Equipo KLPMotionAI despues de Expociencias CDMX 2026.",
+          "sponsor.teamTitle": "Equipo",
+          "sponsor.team": "Karim Carte Granillo, Luciana Garcia de Quevedo Besserer y Patricio Moran Avalos, bajo la asesoria de Montserrat Zaragoza Ojeda.",
+          "sponsor.contactTitle": "Contacto",
+          "sponsor.contactCopy": "Estamos listos para compartir mas detalles, resultados y formas de colaboracion.",
+          "footer": "KLPMotionAI | Proyecto educativo de movimiento parabolico, IA y visualizacion cientifica."
+        },
+        en: {
+          "nav.problem": "Problem",
+          "nav.demo": "Demo",
+          "nav.tech": "Technical",
+          "nav.sponsor": "Sponsorship",
+          "hero.eyebrow": "Official sponsorship",
+          "hero.copy": "An educational tool that combines real experiments, physics, and artificial intelligence so projectile motion becomes visible experience instead of an abstract formula.",
+          "hero.cta": "Support the project",
+          "hero.demo": "View interactive demo",
+          "hero.stat1.value": "Expociencias",
+          "hero.stat1.label": "International-stage qualification representing Mexico.",
+          "hero.stat2.value": "AI + physics",
+          "hero.stat2.label": "Visual comparison between real trajectory, classical model, and prediction.",
+          "hero.stat3.value": "Visual STEM",
+          "hero.stat3.label": "Designed to reduce abstraction and increase participation.",
+          "hero.visualTitle": "Didactic trajectory comparison",
+          "hero.status": "v2 in development",
+          "hero.svgPeak": "maximum height",
+          "hero.svgCompare": "AI vs physics",
+          "problem.eyebrow": "The educational problem",
+          "problem.title": "Physics is often learned as a procedure, not as a phenomenon.",
+          "problem.copy": "Many students memorize equations without a clear opportunity to see, measure, and discuss the motion those equations describe.",
+          "problem.card1.title": "A barrier of abstraction",
+          "problem.card1.copy": "When projectile motion appears only on boards and diagrams, velocity, acceleration, gravity, and range can feel distant.",
+          "problem.card2.title": "A chance to learn by doing",
+          "problem.card2.copy": "The project helps students observe a real launch, see the data, and connect evidence with the physical model.",
+          "solution.eyebrow": "Our solution",
+          "solution.title": "Experiment, visualize, and compare.",
+          "solution.copy": "KLPMotionAI does not replace traditional teaching: it complements it with a visual experience where AI, the physics model, and real data become tools for understanding.",
+          "solution.step1.title": "Real launch",
+          "solution.step1.copy": "The student observes or performs a throw with a ball visible to the camera.",
+          "solution.step2.title": "Measurement",
+          "solution.step2.copy": "The system detects positions, calibrates scale, and converts pixels to meters.",
+          "solution.step3.title": "Prediction",
+          "solution.step3.copy": "AI estimates positions and allows comparison with classical physics.",
+          "solution.step4.title": "Understanding",
+          "solution.step4.copy": "The trajectory stops being an isolated formula and becomes observable evidence.",
+          "demo.eyebrow": "Visual demo",
+          "demo.title": "Adjust the launch and see how the trajectory changes.",
+          "demo.copy": "This visualization is educational: it shows expected physical-model behavior and an illustrative AI curve. The project's real AI is explained in the technical section.",
+          "demo.axisX": "horizontal distance",
+          "demo.axisY": "height",
+          "demo.angle": "Angle",
+          "demo.speed": "Initial speed",
+          "demo.range": "Range",
+          "demo.height": "Max height",
+          "demo.time": "Flight time",
+          "demo.gravity": "Gravity",
+          "demo.legendPhysics": "Physics model",
+          "demo.legendAI": "Illustrative AI",
+          "demo.legendV1": "Real v1 model",
+          "demo.predictV1": "Predict with v1 model",
+          "demo.v1Hint": "Open this demo with the local server to use the real model.",
+          "demo.v1Loading": "Running v1 model...",
+          "demo.v1Ready": "v1 model ready",
+          "demo.v1Error": "To use the real model, open the demo with python klp_demo_server.py.",
+          "tech.eyebrow": "How it works",
+          "tech.title": "From a video to an explainable trajectory.",
+          "tech.copy": "This is how our model works: we measure the launch, estimate its initial conditions, normalize the variables, and use an interpretable neural network to predict trajectory points.",
+          "tech.p1.title": "Video or camera",
+          "tech.p1.copy": "The launch is captured and useful frames are identified.",
+          "tech.p2.title": "Detection",
+          "tech.p2.copy": "HSV, circles, and contours locate the ball in pixels.",
+          "tech.p3.title": "Calibration",
+          "tech.p3.copy": "A reference converts pixels to meters and normalizes the trajectory.",
+          "tech.p4.title": "Physics model",
+          "tech.p4.copy": "A parabolic fit estimates initial velocity and data quality.",
+          "tech.p5.title": "AI",
+          "tech.p5.copy": "MLPRegressor predicts pos_x and pos_y using v0x, v0y, theta_rad, and t.",
+          "tech.notice": "The AI uses StandardScaler to normalize inputs and outputs; this improves stability without making the model hard to explain.",
+          "evidence.eyebrow": "Evidence and impact",
+          "evidence.title": "National recognition and first-round classroom evidence.",
+          "evidence.copy": "The project already has competitive results, editorial presence, and classroom data showing stronger educational reception when the tool is used.",
+          "evidence.card1.value": "National recognition",
+          "evidence.card1": "First place at Expociencias CDMX 2026, the highest average score of the event, and a place in the magazine \"Las 100 mentes mas brillantes de Mexico\", produced by the Agencia Nacional Especial de Ciencia y Tecnologia.",
+          "evidence.card2": "Average first-round satisfaction for groups that worked with AI, compared with 64.2/100 in traditional-class groups.",
+          "evidence.card3": "Higher share of students intending to keep learning science in the first round: 35.7% with AI versus 27.1% in traditional class.",
+          "evidence.notice": "v1 is the validated base for educational testing; v2 remains in development and preserves conceptual compatibility with that base.",
+          "sponsor.eyebrow": "Official sponsorship",
+          "sponsor.title": "Supporting KLPMotionAI means investing in educational science created by young Mexican students.",
+          "sponsor.copy": "Sponsorship helps represent Mexico in the international Expociencias stage and present a proposal that brings physics, artificial intelligence, and experimentation closer to more students.",
+          "sponsor.photoCaption": "KLPMotionAI team after Expociencias CDMX 2026.",
+          "sponsor.teamTitle": "Team",
+          "sponsor.team": "Karim Carte Granillo, Luciana Garcia de Quevedo Besserer, and Patricio Moran Avalos, advised by Montserrat Zaragoza Ojeda.",
+          "sponsor.contactTitle": "Contact",
+          "sponsor.contactCopy": "We are ready to share more details, results, and collaboration opportunities.",
+          "footer": "KLPMotionAI | Educational projectile-motion, AI, and scientific-visualization project."
+        }
+      };
+
+      let currentLang = "es";
+
+      function translate(key) {
+        return (translations[currentLang] && translations[currentLang][key]) || translations.es[key] || key;
+      }
+
+      function computeTrajectory(options) {
+        const angleDeg = Number(options && options.angleDeg) || 45;
+        const speed = Number(options && options.speed) || 10;
+        const angleRad = angleDeg * Math.PI / 180;
+        const v0x = speed * Math.cos(angleRad);
+        const v0y = speed * Math.sin(angleRad);
+        const flightTime = Math.max(0.1, (2 * v0y) / G);
+        const range = v0x * flightTime;
+        const maxHeight = (v0y * v0y) / (2 * G);
+        const points = [];
+        const aiPoints = [];
+        const steps = 72;
+
+        for (let i = 0; i < steps; i += 1) {
+          const progress = i / (steps - 1);
+          const t = progress * flightTime;
+          const x = v0x * t;
+          const y = Math.max(0, v0y * t - 0.5 * G * t * t);
+          const aiBend = 1 + 0.03 * Math.sin(progress * Math.PI);
+          const aiOffset = 0.03 * Math.sin(progress * Math.PI * 2);
+          points.push({ x, y });
+          aiPoints.push({ x: x * (1 + 0.01 * progress), y: Math.max(0, y * aiBend + aiOffset) });
+        }
+
+        return { points, aiPoints, range, maxHeight, flightTime };
+      }
+
+      function toPath(points, width, height) {
+        if (!points || points.length === 0) {
+          return "";
+        }
+        const pad = { left: 56, top: 34, right: 44, bottom: 70 };
+        const plotW = width - pad.left - pad.right;
+        const plotH = height - pad.top - pad.bottom;
+        const maxX = Math.max.apply(null, points.map((point) => point.x)) || 1;
+        const maxY = Math.max.apply(null, points.map((point) => point.y)) || 1;
+        return points.map((point, index) => {
+          const x = pad.left + (point.x / maxX) * plotW;
+          const y = height - pad.bottom - (point.y / maxY) * plotH;
+          return `${index === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`;
+        }).join(" ");
+      }
+
+      function setText(id, value) {
+        const element = document.getElementById(id);
+        if (element) {
+          element.textContent = value;
+        }
+      }
+
+      function setV1Status(key, className, details) {
+        const status = document.getElementById("v1Status");
+        if (!status) {
+          return;
+        }
+        status.classList.remove("is-error", "is-ready");
+        if (className) {
+          status.classList.add(className);
+        }
+        status.textContent = details ? `${translate(key)}: ${details}` : translate(key);
+      }
+
+      function resetV1Prediction() {
+        const v1Path = document.getElementById("v1Path");
+        if (v1Path) {
+          v1Path.setAttribute("d", "");
+        }
+        setV1Status("demo.v1Hint", "");
+      }
+
+      function renderTrajectory() {
+        const angleInput = document.getElementById("angleControl");
+        const speedInput = document.getElementById("speedControl");
+        const physicsPath = document.getElementById("physicsPath");
+        const aiPath = document.getElementById("aiPath");
+        const ball = document.getElementById("demoBall");
+        if (!angleInput || !speedInput || !physicsPath || !aiPath || !ball) {
+          return;
+        }
+
+        const angle = Number(angleInput.value);
+        const speed = Number(speedInput.value);
+        const result = computeTrajectory({ angleDeg: angle, speed });
+        physicsPath.setAttribute("d", toPath(result.points, 720, 430));
+        aiPath.setAttribute("d", toPath(result.aiPoints, 720, 430));
+        resetV1Prediction();
+
+        const peak = result.points.reduce((best, point) => point.y > best.y ? point : best, result.points[0]);
+        const maxX = Math.max.apply(null, result.points.map((point) => point.x)) || 1;
+        const maxY = Math.max.apply(null, result.points.map((point) => point.y)) || 1;
+        const ballX = 56 + (peak.x / maxX) * 620;
+        const ballY = 360 - (peak.y / maxY) * 256;
+        ball.setAttribute("cx", ballX.toFixed(2));
+        ball.setAttribute("cy", ballY.toFixed(2));
+
+        setText("angleValue", `${angle}°`);
+        setText("speedValue", `${speed.toFixed(1).replace(".0", "")} m/s`);
+        setText("rangeMetric", `${result.range.toFixed(2)} m`);
+        setText("heightMetric", `${result.maxHeight.toFixed(2)} m`);
+        setText("timeMetric", `${result.flightTime.toFixed(2)} s`);
+      }
+
+      async function requestV1Prediction() {
+        const angleInput = document.getElementById("angleControl");
+        const speedInput = document.getElementById("speedControl");
+        const v1Path = document.getElementById("v1Path");
+        if (!angleInput || !speedInput || !v1Path) {
+          return null;
+        }
+
+        const params = new URLSearchParams({
+          angle: angleInput.value,
+          speed: speedInput.value,
+          points: "101"
+        });
+
+        setV1Status("demo.v1Loading", "");
+        try {
+          const response = await fetch(`/api/predict-v1?${params.toString()}`);
+          if (!response.ok) {
+            const payload = await response.json().catch(() => ({}));
+            throw new Error(payload.error || response.statusText);
+          }
+          const payload = await response.json();
+          v1Path.setAttribute("d", toPath(payload.points, 720, 430));
+          setV1Status(
+            "demo.v1Ready",
+            "is-ready",
+            `${payload.range.toFixed(2)} m / ${payload.maxHeight.toFixed(2)} m`
+          );
+          return payload;
+        } catch (error) {
+          v1Path.setAttribute("d", "");
+          setV1Status("demo.v1Error", "is-error");
+          return null;
+        }
+      }
+
+      function setLanguage(lang) {
+        const selected = translations[lang] ? lang : "es";
+        currentLang = selected;
+        document.documentElement.lang = selected;
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          if (translations[selected][key]) {
+            element.textContent = translations[selected][key];
+          }
+        });
+        document.querySelectorAll("[data-lang]").forEach((button) => {
+          const active = button.getAttribute("data-lang") === selected;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+      }
+
+      function init() {
+        document.querySelectorAll("[data-lang]").forEach((button) => {
+          button.addEventListener("click", () => setLanguage(button.getAttribute("data-lang")));
+        });
+        const angleInput = document.getElementById("angleControl");
+        const speedInput = document.getElementById("speedControl");
+        if (angleInput) {
+          angleInput.addEventListener("input", renderTrajectory);
+        }
+        if (speedInput) {
+          speedInput.addEventListener("input", renderTrajectory);
+        }
+        const predictButton = document.getElementById("predictV1Button");
+        if (predictButton) {
+          predictButton.addEventListener("click", requestV1Prediction);
+        }
+        setLanguage("es");
+        renderTrajectory();
+      }
+
+      window.KLPMotionAI = {
+        computeTrajectory,
+        requestV1Prediction,
+        setLanguage,
+        translations
+      };
+
+      document.addEventListener("DOMContentLoaded", init);
+    }());
+  </script>
+</body>
+</html>
